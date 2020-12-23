@@ -2,7 +2,6 @@ package lexer
 
 import (
 	"bufio"
-	"errors"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -58,11 +57,8 @@ func (l *Lexer) submit(t TokenType, format string, v ...interface{}) {
 }
 
 func (l *Lexer) error(err error) {
-	if err == io.EOF {
-		l.eof(l)
-	} else {
-		l.submit(TokenTypeIllegal, "error '%s' appeared", err.Error())
-	}
+	l.submit(TokenTypeIllegal, fmt.Sprintf("error '%s' appeared", err.Error()))
+	l.eof(l)
 }
 
 func (l *Lexer) discardWhitespaces() error {
@@ -96,6 +92,10 @@ func (l *Lexer) lexBegin(*Lexer) LexingFunc {
 }
 
 func (l *Lexer) lexPrefix(*Lexer) LexingFunc {
+	if len(l.options.Prefixes) == 0 {
+		return l.lexLabel
+	}
+
 	content, err := l.readAll()
 
 	if err != nil && err != io.EOF {
@@ -124,6 +124,10 @@ func (l *Lexer) lexPrefix(*Lexer) LexingFunc {
 }
 
 func (l *Lexer) lexLabel(*Lexer) LexingFunc {
+	if len(l.options.Labels) == 0 {
+		return l.lexFurther
+	}
+
 	content, err := l.readAll()
 
 	if err != nil && err != io.EOF {
@@ -131,35 +135,22 @@ func (l *Lexer) lexLabel(*Lexer) LexingFunc {
 		return nil
 	}
 
-	var match string
-	found := false
+	length := 0
 
 	for _, label := range l.options.Labels {
-		hasPrefix := gotilities.StringHasPrefix(string(content), label, l.options.LabelIgnoreCase)
-
-		if hasPrefix && (!found || len(label) > len(match)) {
-			match = label
-			found = true
+		if gotilities.StringHasPrefix(string(content), label, l.options.LabelIgnoreCase) && len(label) > length {
+			length = len(label)
 		}
 	}
 
-	if !found {
-		l.error(errors.New("no label used"))
-		return nil
-	}
+	b, err := ioutil.ReadAll(io.LimitReader(l.reader, int64(length)))
 
-	b, err := ioutil.ReadAll(io.LimitReader(l.reader, int64(len(match))))
-
-	if err != nil && err != io.EOF {
+	if err != nil {
 		l.error(err)
 		return nil
 	}
 
 	l.submit(TokenTypeLabel, string(b))
-
-	if err == io.EOF {
-		return l.eof
-	}
 
 	return l.lexFurther
 }
