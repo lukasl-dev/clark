@@ -51,10 +51,14 @@ func (t Token) String() string {
 	return fmt.Sprintf("%s: '%s'", t.Type.String(), t.Value)
 }
 
-func (t Token) MarshalJSON() ([]byte, error) {
-	return json.Marshal(map[string]interface{}{
+func (t Token) Map() map[string]interface{} {
+	return map[string]interface{}{
 		"type":  t.Type.String(),
 		"code":  t.Type,
 		"value": t.Value,
-	})
+	}
+}
+
+func (t Token) MarshalJSON() ([]byte, error) {
+	return json.Marshal(t.Map())
 }
