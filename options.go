@@ -1,4 +1,4 @@
-package lexer
+package clark
 
 type Options struct {
 	Prefixes         []string `json:"prefixes,omitempty"`
