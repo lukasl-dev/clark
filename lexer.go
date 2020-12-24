@@ -57,7 +57,10 @@ func (l *Lexer) submit(t TokenType, format string, v ...interface{}) {
 }
 
 func (l *Lexer) error(err error) {
-	l.submit(TokenTypeIllegal, fmt.Sprintf("error '%s' appeared", err.Error()))
+	if err != io.EOF {
+		l.submit(TokenTypeIllegal, fmt.Sprintf("error '%s' appeared", err.Error()))
+	}
+
 	l.eof(l)
 }
 
