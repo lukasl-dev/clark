@@ -106,6 +106,10 @@ func (l *Lexer) lexPrefix(*Lexer) LexingFunc {
 		return nil
 	}
 
+	if len(content) == 0 {
+		return l.eof
+	}
+
 	length := 0
 
 	for _, prefix := range l.options.Prefixes {
@@ -123,6 +127,10 @@ func (l *Lexer) lexPrefix(*Lexer) LexingFunc {
 
 	l.submit(TokenTypePrefix, string(b))
 
+	if length == len(string(content)) {
+		return l.eof
+	}
+
 	return l.lexLabel
 }
 
@@ -136,6 +144,10 @@ func (l *Lexer) lexLabel(*Lexer) LexingFunc {
 	if err != nil && err != io.EOF {
 		l.error(err)
 		return nil
+	}
+
+	if len(content) == 0 {
+		return l.eof
 	}
 
 	length := 0
@@ -154,6 +166,10 @@ func (l *Lexer) lexLabel(*Lexer) LexingFunc {
 	}
 
 	l.submit(TokenTypeLabel, string(b))
+
+	if length == len(string(content)) {
+		return l.eof
+	}
 
 	return l.lexFurther
 }

@@ -1,13 +1,7 @@
 package main
 
 import (
-	"errors"
-
 	"github.com/spf13/pflag"
-)
-
-var (
-	ErrInputEmpty = errors.New("input cannot be empty")
 )
 
 var (
@@ -37,9 +31,5 @@ func defineFlags(set *pflag.FlagSet) {
 }
 
 func validateFlags() error {
-	if len(input) == 0 {
-		return ErrInputEmpty
-	}
-
 	return nil
 }
