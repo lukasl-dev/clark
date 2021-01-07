@@ -1,3 +1,19 @@
+/*
+ * Copyright 2021 lukasl-dev
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package clark
 
 import (
@@ -20,6 +36,8 @@ type Lexer struct {
 	lastToken *Token
 }
 
+// NewLexer creates and returns a new Lexer with the passed reader.
+// To use a String-Lexer, use strings.NewReader(s) and wrap it with bufio.NewReader(r)
 func NewLexer(options Options, reader *bufio.Reader) *Lexer {
 	return &Lexer{
 		options: options,
@@ -28,10 +46,12 @@ func NewLexer(options Options, reader *bufio.Reader) *Lexer {
 	}
 }
 
+// Chan returns the channel where the tokens are streamed in.
 func (l *Lexer) Chan() chan Token {
 	return l.tokens
 }
 
+// Run executes the lexer until no more LexingFunc is returned (EOF).
 func (l *Lexer) Run() chan Token {
 	for fn := l.lexBegin; fn != nil; {
 		fn = fn(l)
