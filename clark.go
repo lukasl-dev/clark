@@ -16,4 +16,12 @@
 
 package clark
 
-// empty package-file
+import (
+  "io"
+
+  "github.com/lukasl-dev/clark/lexing"
+)
+
+func NewLexer(reader io.Reader, options ...lexing.Option) (*lexing.Lexer, error) {
+  return lexing.NewLexer(reader, options...)
+}
