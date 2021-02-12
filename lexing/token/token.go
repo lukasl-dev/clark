@@ -14,11 +14,28 @@
  * limitations under the License.
  */
 
-package clark
+package token
 
-type Options struct {
-	Prefixes         []string `json:"prefixes,omitempty"`
-	PrefixIgnoreCase bool     `json:"prefixIgnoreCase,omitempty"`
-	Labels           []string `json:"labels,omitempty"`
-	LabelIgnoreCase  bool     `json:"labelIgnoreCase,omitempty"`
+import "encoding/json"
+
+type Token struct {
+  Type Type   `json:"type,omitempty"`
+  Val  string `json:"value,omitempty"`
+}
+
+func (t Token) String() string {
+  b, _ := t.MarshalJSON()
+  return string(b)
+}
+
+func (t Token) Map() map[string]interface{} {
+  return map[string]interface{}{
+    "code":  t.Type,
+    "type":  t.Type.String(),
+    "value": t.Val,
+  }
+}
+
+func (t Token) MarshalJSON() ([]byte, error) {
+  return json.Marshal(t.Map())
 }
