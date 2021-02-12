@@ -11,10 +11,10 @@
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
 
-# Golang
+# Go language features
 *.sum
 
-# IDEA
+# Jetbrains Platform
 .idea
 
 # Dependency directories (remove the comment below to include it)
