@@ -48,7 +48,7 @@ func Read(timeout time.Duration) ([]byte, error) {
 		return unicode.IsSpace(r)
 	})
 
-	return dest, nil
+	return dest, err
 }
 
 func Write(b []byte) error {
