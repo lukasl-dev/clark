@@ -117,7 +117,7 @@ lex, err := clark.NewLexer(
 | [`lexing.Prefixes`](https://pkg.go.dev/github.com/lukasl-dev/clark/lexing#Prefixes)                 |         Prefixes defines the prefixes used by the lexer. |
 | [`lexing.Labels`](https://pkg.go.dev/github.com/lukasl-dev/clark/lexing#Labels)                     |             Labels defines the labels used by the lexer. |
 | [`lexing.PrefixIgnoreCase`](https://pkg.go.dev/github.com/lukasl-dev/clark/lexing#PrefixIgnoreCase) |  PrefixIgnoreCase defines the prefixes case sensitivity. |
-| [`lexing.LabelIgnoreCase`](https://pkg.go.dev/github.com/lukasl-dev/clark/lexing#LabelIgnoreCase)   |    PrefixIgnoreCase defines the labels case sensitivity. |
+| [`lexing.LabelIgnoreCase`](https://pkg.go.dev/github.com/lukasl-dev/clark/lexing#LabelIgnoreCase)   |     LabelIgnoreCase defines the labels case sensitivity. |
 | [`lexing.SkipPrefix`](https://pkg.go.dev/github.com/lukasl-dev/clark/lexing#SkipPrefix)             | SkipPrefix defines whether the prefix should be skipped. |
 | [`lexing.SkipLabel`](https://pkg.go.dev/github.com/lukasl-dev/clark/lexing#SkipLabel)               |   SkipLabel defines whether the label should be skipped. |
 
