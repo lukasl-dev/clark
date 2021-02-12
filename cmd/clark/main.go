@@ -17,13 +17,13 @@
 package main
 
 import (
-  "log"
+	"log"
 
-  "github.com/lukasl-dev/clark/cmd/clark/commands"
+	"github.com/lukasl-dev/clark/cmd/clark/commands"
 )
 
 func main() {
-  if err := commands.Root().Execute(); err != nil {
-    log.Fatalln(err.Error())
-  }
+	if err := commands.Root().Execute(); err != nil {
+		log.Fatalln(err.Error())
+	}
 }

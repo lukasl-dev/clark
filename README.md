@@ -24,18 +24,18 @@
 <br>
 
 - [clark](#clark)
-  - [What is `clark`?](#what-is-clark)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-    - [Install the package](#install-the-package)
-    - [Install the CLI](#install-the-cli)
-  - [Getting started](#getting-started)
-    - [Create a Reader](#create-a-reader)
-    - [Create a Lexer](#create-a-lexer)
-      - [Available Options](#available-options)
-    - [Start the lexing progress](#start-the-lexing-progress)
-    - [Collect the lexed Tokens](#collect-the-lexed-tokens)
-  - [Usage of the CLI](#usage-of-the-cli)
+    - [What is `clark`?](#what-is-clark)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+        - [Install the package](#install-the-package)
+        - [Install the CLI](#install-the-cli)
+    - [Getting started](#getting-started)
+        - [Create a Reader](#create-a-reader)
+        - [Create a Lexer](#create-a-lexer)
+            - [Available Options](#available-options)
+        - [Start the lexing progress](#start-the-lexing-progress)
+        - [Collect the lexed Tokens](#collect-the-lexed-tokens)
+    - [Usage of the CLI](#usage-of-the-cli)
 
 ---
 

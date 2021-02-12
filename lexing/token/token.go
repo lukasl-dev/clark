@@ -19,23 +19,23 @@ package token
 import "encoding/json"
 
 type Token struct {
-  Type Type   `json:"type,omitempty"`
-  Val  string `json:"value,omitempty"`
+	Type Type   `json:"type,omitempty"`
+	Val  string `json:"value,omitempty"`
 }
 
 func (t Token) String() string {
-  b, _ := t.MarshalJSON()
-  return string(b)
+	b, _ := t.MarshalJSON()
+	return string(b)
 }
 
 func (t Token) Map() map[string]interface{} {
-  return map[string]interface{}{
-    "code":  t.Type,
-    "type":  t.Type.String(),
-    "value": t.Val,
-  }
+	return map[string]interface{}{
+		"code":  t.Type,
+		"type":  t.Type.String(),
+		"value": t.Val,
+	}
 }
 
 func (t Token) MarshalJSON() ([]byte, error) {
-  return json.Marshal(t.Map())
+	return json.Marshal(t.Map())
 }

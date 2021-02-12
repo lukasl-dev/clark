@@ -21,48 +21,48 @@ type Option func(lexer *Lexer) error
 
 // Prefixes defines the prefixes used by the lexer.
 func Prefixes(prefixes ...string) Option {
-  return func(lexer *Lexer) error {
-    lexer.prefixes = prefixes
-    return nil
-  }
+	return func(lexer *Lexer) error {
+		lexer.prefixes = prefixes
+		return nil
+	}
 }
 
 // Labels defines the labels used by the lexer.
 func Labels(labels ...string) Option {
-  return func(lexer *Lexer) error {
-    lexer.labels = labels
-    return nil
-  }
+	return func(lexer *Lexer) error {
+		lexer.labels = labels
+		return nil
+	}
 }
 
 // PrefixIgnoreCase defines the prefixes case sensitivity.
 func PrefixIgnoreCase(b bool) Option {
-  return func(lexer *Lexer) error {
-    lexer.prefixIgnoreCase = b
-    return nil
-  }
+	return func(lexer *Lexer) error {
+		lexer.prefixIgnoreCase = b
+		return nil
+	}
 }
 
 // PrefixIgnoreCase defines the labels case sensitivity.
 func LabelIgnoreCase(b bool) Option {
-  return func(lexer *Lexer) error {
-    lexer.labelIgnoreCase = b
-    return nil
-  }
+	return func(lexer *Lexer) error {
+		lexer.labelIgnoreCase = b
+		return nil
+	}
 }
 
 // SkipPrefix defines whether the prefix should be skipped.
 func SkipPrefix(b bool) Option {
-  return func(lexer *Lexer) error {
-    lexer.skipPrefix = b
-    return nil
-  }
+	return func(lexer *Lexer) error {
+		lexer.skipPrefix = b
+		return nil
+	}
 }
 
 // SkipLabel defines whether the label should be skipped.
 func SkipLabel(b bool) Option {
-  return func(lexer *Lexer) error {
-    lexer.skipLabel = b
-    return nil
-  }
+	return func(lexer *Lexer) error {
+		lexer.skipLabel = b
+		return nil
+	}
 }

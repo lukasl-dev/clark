@@ -17,11 +17,11 @@
 package clark
 
 import (
-  "io"
+	"io"
 
-  "github.com/lukasl-dev/clark/lexing"
+	"github.com/lukasl-dev/clark/lexing"
 )
 
 func NewLexer(reader io.Reader, options ...lexing.Option) (*lexing.Lexer, error) {
-  return lexing.NewLexer(reader, options...)
+	return lexing.NewLexer(reader, options...)
 }

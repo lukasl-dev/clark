@@ -19,35 +19,35 @@ package token
 import "log"
 
 const (
-  EOF Type = iota
-  UnexpectedEOF
-  TypePrefix
-  TypeLabel
-  TypeArgument
-  TypeFlag
+	EOF Type = iota
+	UnexpectedEOF
+	TypePrefix
+	TypeLabel
+	TypeArgument
+	TypeFlag
 )
 
 var typeMap = map[Type]string{
-  EOF:           "EOF",
-  UnexpectedEOF: "UnexpectedEOF",
-  TypePrefix:    "Prefix",
-  TypeLabel:     "Label",
-  TypeArgument:  "Argument",
-  TypeFlag:      "Flag",
+	EOF:           "EOF",
+	UnexpectedEOF: "UnexpectedEOF",
+	TypePrefix:    "Prefix",
+	TypeLabel:     "Label",
+	TypeArgument:  "Argument",
+	TypeFlag:      "Flag",
 }
 
 type Type int
 
 // String returns the string representation of t.
 func (t Type) String() string {
-  s, ok := typeMap[t]
-  if !ok {
-    log.Panicf("missing string representation for %d", t)
-  }
-  return s
+	s, ok := typeMap[t]
+	if !ok {
+		log.Panicf("missing string representation for %d", t)
+	}
+	return s
 }
 
 // EOF returns true, if the type is EOF or a subtype of EOF.
 func (t Type) EOF() bool {
-  return t == EOF || t == UnexpectedEOF
+	return t == EOF || t == UnexpectedEOF
 }
