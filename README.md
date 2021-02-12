@@ -24,18 +24,18 @@
 <br>
 
 - [clark](#clark)
-  - [What is `clark`?](#what-is-clark)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-    - [Install the package](#install-the-package)
-    - [Install the CLI](#install-the-cli)
-  - [Getting started](#getting-started)
-    - [Create a Reader](#create-a-reader)
-    - [Create a Lexer](#create-a-lexer)
-      - [Available Options](#available-options)
-    - [Start the lexing progress](#start-the-lexing-progress)
-    - [Collect the lexed Tokens](#collect-the-lexed-tokens)
-  - [Usage of the CLI](#usage-of-the-cli)
+    - [What is `clark`?](#what-is-clark)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+        - [Install the package](#install-the-package)
+        - [Install the CLI](#install-the-cli)
+    - [Getting started](#getting-started)
+        - [Create a Reader](#create-a-reader)
+        - [Create a Lexer](#create-a-lexer)
+            - [Available Options](#available-options)
+        - [Start the lexing progress](#start-the-lexing-progress)
+        - [Collect the lexed Tokens](#collect-the-lexed-tokens)
+    - [Usage of the CLI](#usage-of-the-cli)
 
 ---
 
@@ -117,7 +117,7 @@ lex, err := clark.NewLexer(
 | [`lexing.Prefixes`](https://pkg.go.dev/github.com/lukasl-dev/clark/lexing#Prefixes)                 |         Prefixes defines the prefixes used by the lexer. |
 | [`lexing.Labels`](https://pkg.go.dev/github.com/lukasl-dev/clark/lexing#Labels)                     |             Labels defines the labels used by the lexer. |
 | [`lexing.PrefixIgnoreCase`](https://pkg.go.dev/github.com/lukasl-dev/clark/lexing#PrefixIgnoreCase) |  PrefixIgnoreCase defines the prefixes case sensitivity. |
-| [`lexing.LabelIgnoreCase`](https://pkg.go.dev/github.com/lukasl-dev/clark/lexing#LabelIgnoreCase)   |    PrefixIgnoreCase defines the labels case sensitivity. |
+| [`lexing.LabelIgnoreCase`](https://pkg.go.dev/github.com/lukasl-dev/clark/lexing#LabelIgnoreCase)   |     LabelIgnoreCase defines the labels case sensitivity. |
 | [`lexing.SkipPrefix`](https://pkg.go.dev/github.com/lukasl-dev/clark/lexing#SkipPrefix)             | SkipPrefix defines whether the prefix should be skipped. |
 | [`lexing.SkipLabel`](https://pkg.go.dev/github.com/lukasl-dev/clark/lexing#SkipLabel)               |   SkipLabel defines whether the label should be skipped. |
 

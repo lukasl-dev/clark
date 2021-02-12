@@ -1,17 +1,17 @@
 /*
- * Copyright 2021 lukasl-dev
+ *    Copyright 2021 lukasl-dev
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *        http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
  */
 
 package token
@@ -19,23 +19,23 @@ package token
 import "encoding/json"
 
 type Token struct {
-  Type Type   `json:"type,omitempty"`
-  Val  string `json:"value,omitempty"`
+	Type Type   `json:"type,omitempty"`
+	Val  string `json:"value,omitempty"`
 }
 
 func (t Token) String() string {
-  b, _ := t.MarshalJSON()
-  return string(b)
+	b, _ := t.MarshalJSON()
+	return string(b)
 }
 
 func (t Token) Map() map[string]interface{} {
-  return map[string]interface{}{
-    "code":  t.Type,
-    "type":  t.Type.String(),
-    "value": t.Val,
-  }
+	return map[string]interface{}{
+		"code":  t.Type,
+		"type":  t.Type.String(),
+		"value": t.Val,
+	}
 }
 
 func (t Token) MarshalJSON() ([]byte, error) {
-  return json.Marshal(t.Map())
+	return json.Marshal(t.Map())
 }
