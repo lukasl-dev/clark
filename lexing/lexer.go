@@ -61,14 +61,9 @@ type Lexer struct {
 // NewLexer returns a new Lexer.
 func NewLexer(reader io.Reader, options ...Option) (*Lexer, error) {
 	l := &Lexer{}
-	l.Reset(reader)
-
-	for _, option := range options {
-		if err := option(l); err != nil {
-			return nil, err
-		}
+	if err := l.Reset(reader, options...); err != nil {
+		return nil, err
 	}
-
 	return l, nil
 }
 
@@ -78,10 +73,18 @@ func (l *Lexer) Present() bool {
 }
 
 // Reset resets the lexer to be reading from reader.
-func (l *Lexer) Reset(reader io.Reader) {
+func (l *Lexer) Reset(reader io.Reader, options ...Option) error {
 	l.tokens = make(chan token.Token)
 	l.reader = bufio.NewReader(reader)
 	l.lastToken = nil
+
+	for _, option := range options {
+		if err := option(l); err != nil {
+			return err
+		}
+	}
+
+	return nil
 }
 
 // Chan returns the token channel in which the tokens get streamed in.
