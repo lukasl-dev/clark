@@ -19,11 +19,20 @@ package main
 import (
 	"log"
 
-	"github.com/lukasl-dev/clark/cmd/clark/commands"
+	"github.com/lukasl-dev/clark/cmd/clark/commands/interactive"
+	"github.com/spf13/cobra"
 )
 
+var cmd = &cobra.Command{
+	Use: "clark",
+}
+
+func init() {
+	cmd.AddCommand(interactive.Interactive())
+}
+
 func main() {
-	if err := commands.Root().Execute(); err != nil {
-		log.Fatalln(err.Error())
+	if err := cmd.Execute(); err != nil {
+		log.Fatalln(err)
 	}
 }
