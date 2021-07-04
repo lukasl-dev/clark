@@ -37,3 +37,7 @@ const (
 	TokenTypeSingleQuote TokenType = "single-quote"
 	TokenTypeDoubleQuote TokenType = "double-quote"
 )
+
+func (t TokenType) String() string {
+	return string(t)
+}
