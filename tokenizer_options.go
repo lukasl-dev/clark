@@ -30,6 +30,7 @@ type TokenizerOptions struct {
 	noPrefix         bool
 	labels           []string
 	labelIgnoreCase  bool
+	noLabel          bool
 }
 
 func NewTokenizerOptions() *TokenizerOptions {
@@ -65,5 +66,10 @@ func (opts *TokenizerOptions) WithLabels(labels ...string) *TokenizerOptions {
 
 func (opts *TokenizerOptions) WithLabelIgnoreCase(labelIgnoreCase bool) *TokenizerOptions {
 	opts.labelIgnoreCase = labelIgnoreCase
+	return opts
+}
+
+func (opts *TokenizerOptions) WithNoLabel(noLabel bool) *TokenizerOptions {
+	opts.noLabel = noLabel
 	return opts
 }

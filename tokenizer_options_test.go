@@ -90,3 +90,14 @@ func TestTokenizerOptions_WithLabelIgnoreCase(t *testing.T) {
 	}
 	assert.Equal(t, expected, actual)
 }
+
+func TestTokenizerOptions_WithNoLabel(t *testing.T) {
+	const (
+		noLabel = true
+	)
+	actual := NewTokenizerOptions().WithNoLabel(noLabel)
+	expected := &TokenizerOptions{
+		noLabel: noLabel,
+	}
+	assert.Equal(t, expected, actual)
+}
