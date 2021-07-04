@@ -58,6 +58,17 @@ func TestTokenizerOptions_WithPrefixIgnoreCase(t *testing.T) {
 	assert.Equal(t, expected, actual)
 }
 
+func TestTokenizerOptions_WithNoPrefix(t *testing.T) {
+	const (
+		noPrefix = true
+	)
+	actual := NewTokenizerOptions().WithNoPrefix(noPrefix)
+	expected := &TokenizerOptions{
+		noPrefix: noPrefix,
+	}
+	assert.Equal(t, expected, actual)
+}
+
 func TestTokenizerOptions_WithLabels(t *testing.T) {
 	var (
 		labels = []string{"play", "resume", "stop", "skip"}

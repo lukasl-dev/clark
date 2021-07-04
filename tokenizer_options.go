@@ -27,6 +27,7 @@ package clark
 type TokenizerOptions struct {
 	prefixes         []string
 	prefixIgnoreCase bool
+	noPrefix         bool
 	labels           []string
 	labelIgnoreCase  bool
 }
@@ -49,6 +50,11 @@ func (opts *TokenizerOptions) WithPrefixes(prefixes ...string) *TokenizerOptions
 
 func (opts *TokenizerOptions) WithPrefixIgnoreCase(prefixIgnoreCase bool) *TokenizerOptions {
 	opts.prefixIgnoreCase = prefixIgnoreCase
+	return opts
+}
+
+func (opts *TokenizerOptions) WithNoPrefix(noPrefix bool) *TokenizerOptions {
+	opts.noPrefix = noPrefix
 	return opts
 }
 
