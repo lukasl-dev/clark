@@ -24,19 +24,19 @@
 
 package clark
 
-import "strings"
+import (
+	"fmt"
+	"testing"
 
-type Token struct {
-	Type    TokenType `json:"type,omitempty"`
-	Literal string    `json:"literal,omitempty"`
-}
+	"github.com/stretchr/testify/assert"
+)
 
-func (t Token) String() string {
-	var b strings.Builder
-	b.WriteString(t.Type.String())
-	if len(t.Literal) > 0 {
-		b.WriteString(": ")
-		b.WriteString(t.Literal)
-	}
-	return b.String()
+func TestToken_String(t *testing.T) {
+	const (
+		typ     = TokenTypePrefix
+		literal = "/"
+	)
+	actual := Token{Type: typ, Literal: literal}.String()
+	expected := fmt.Sprintf("%s: %s", typ, literal)
+	assert.Equal(t, expected, actual)
 }
